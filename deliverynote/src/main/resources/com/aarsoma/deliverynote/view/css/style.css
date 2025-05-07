@@ -1,0 +1,91 @@
+
+/* Global Styles */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-background-color: #f5f5f5;
+}
+
+/* Splash Screen */
+.splash-background {
+    -fx-background-color: linear-gradient(to bottom right, #1a237e, #283593, #3949ab);
+}
+
+.app-title {
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5, 0, 0, 1);
+}
+
+.app-subtitle {
+    -fx-text-fill: #e0e0e0;
+}
+
+.primary-button {
+    -fx-background-color: #4caf50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+}
+
+.primary-button:hover {
+    -fx-background-color: #66bb6a;
+    -fx-cursor: hand;
+}
+
+/* Dashboard */
+.header-bar {
+    -fx-background-color: #e0e0e0;
+    -fx-border-color: #bdbdbd;
+    -fx-border-width: 0 0 1 0;
+}
+
+.date-time-label {
+    -fx-text-fill: #424242;
+}
+
+.section-header {
+    -fx-text-fill: #1a237e;
+}
+
+.financial-year-label {
+    -fx-text-fill: #1a237e;
+}
+
+.stat-card {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);
+    -fx-border-radius: 5;
+}
+
+.stat-header {
+    -fx-text-fill: #424242;
+}
+
+.stat-value {
+    -fx-text-fill: #1a237e;
+    -fx-font-weight: bold;
+}
+
+/* Delivery History */
+.page-title {
+    -fx-text-fill: #1a237e;
+}
+
+.search-button {
+    -fx-background-color: #2196f3;
+    -fx-text-fill: white;
+    -fx-background-radius: 3;
+}
+
+.search-button:hover {
+    -fx-background-color: #42a5f5;
+    -fx-cursor: hand;
+}
+
+.detail-label {
+    -fx-font-weight: bold;
+}
+
+.detail-value {
+    -fx-text-fill: #424242;
+}

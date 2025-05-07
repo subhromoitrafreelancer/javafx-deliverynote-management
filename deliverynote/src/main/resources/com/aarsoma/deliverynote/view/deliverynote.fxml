@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.controlsfx.control.textfield.TextFields?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.aarsoma.deliverynote.controller.DeliveryNoteController">
+    <top>
+        <VBox spacing="10">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Delivery Note #:" />
+                <TextField fx:id="noteNumberField" editable="false" />
+
+                <Label text="Date:" />
+                <TextField fx:id="dateField" editable="false" />
+
+                <Label text="Customer:" />
+                <ComboBox fx:id="customerComboBox" prefWidth="200" />
+                <Button text="+" onAction="#handleAddCustomer" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <TableView fx:id="itemsTable">
+            <columns>
+                <TableColumn fx:id="srNoColumn" text="Sr. No" />
+                <TableColumn fx:id="itemNameColumn" text="Items" />
+                <TableColumn fx:id="orderedQtyColumn" text="Ordered Qty" />
+                <TableColumn fx:id="deliveredQtyColumn" text="Delivered Qty" />
+                <TableColumn fx:id="balanceQtyColumn" text="Balance Qty" />
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+            <Button text="Add Item" onAction="#handleAddItem" />
+            <Button text="Remove Item" onAction="#handleRemoveItem" />
+            <Button text="Save" onAction="#handleSave" />
+            <Button text="Print Preview" onAction="#handlePrintPreview" />
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="700.0" prefWidth="900.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aarsoma.deliverynote.controller.DeliveryHistoryController">
+    <top>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <Label styleClass="page-title" text="Delivery Note History">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </VBox.margin>
+                </Label>
+                <HBox spacing="10.0">
+                    <children>
+                        <TitledPane animated="false" text="Search By Customer">
+                            <content>
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                    <children>
+                                        <ComboBox fx:id="customerComboBox" prefHeight="25.0" prefWidth="200.0" promptText="Select Customer" />
+                                        <Button mnemonicParsing="false" onAction="#handleSearchByCustomer" styleClass="search-button" text="Search" />
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                </HBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane animated="false" text="Search By Date">
+                            <content>
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                    <children>
+                                        <DatePicker fx:id="singleDatePicker" promptText="Select Date" />
+                                        <Button mnemonicParsing="false" onAction="#handleSearchByDate" styleClass="search-button" text="Search" />
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                </HBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane animated="false" text="Search By Date Range">
+                            <content>
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                    <children>
+                                        <DatePicker fx:id="startDatePicker" promptText="Start Date" />
+                                        <Label text="to" />
+                                        <DatePicker fx:id="endDatePicker" promptText="End Date" />
+                                        <Button mnemonicParsing="false" onAction="#handleSearchByDateRange" styleClass="search-button" text="Search" />
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                </HBox>
+                            </content>
+                        </TitledPane>
+                    </children>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#handleShowAll" text="Show All" />
+                        <Button mnemonicParsing="false" onAction="#handlePrint" styleClass="primary-button" text="Print Selected" />
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+    <center>
+        <SplitPane dividerPositions="0.6" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <items>
+                <TableView fx:id="deliveryNotesTable" prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                        <TableColumn fx:id="noteNumberColumn" prefWidth="120.0" text="Note Number" />
+                        <TableColumn fx:id="issueDateColumn" prefWidth="150.0" text="Date &amp; Time" />
+                        <TableColumn fx:id="customerNameColumn" prefWidth="200.0" text="Customer" />
+                        <TableColumn fx:id="itemCountColumn" prefWidth="75.0" text="Items" />
+                    </columns>
+                </TableView>
+                <VBox fx:id="detailsPane" prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <TitledPane animated="false" text="Delivery Note Details">
+                            <content>
+                                <VBox spacing="10.0">
+                                    <children>
+                                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                            <children>
+                                                <Label styleClass="detail-label" text="Note Number:" />
+                                                <Label fx:id="selectedNoteNumberLabel" styleClass="detail-value" text="-" />
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                            <children>
+                                                <Label styleClass="detail-label" text="Customer:" />
+                                                <Label fx:id="selectedCustomerLabel" styleClass="detail-value" text="-" />
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                            <children>
+                                                <Label styleClass="detail-label" text="Date &amp; Time:" />
+                                                <Label fx:id="selectedDateLabel" styleClass="detail-value" text="-" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </padding>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane animated="false" expanded="true" text="Items" VBox.vgrow="ALWAYS">
+                            <content>
+                                <TableView fx:id="itemsTable" prefHeight="200.0" prefWidth="200.0">
+                                    <columns>
+                                        <TableColumn fx:id="itemSrNoColumn" prefWidth="50.0" text="Sr. No" />
+                                        <TableColumn fx:id="itemNameColumn" prefWidth="120.0" text="Item" />
+                                        <TableColumn fx:id="orderedQtyColumn" prefWidth="75.0" text="Ordered" />
+                                        <TableColumn fx:id="deliveredQtyColumn" prefWidth="75.0" text="Delivered" />
+                                        <TableColumn fx:id="balanceQtyColumn" prefWidth="75.0" text="Balance" />
+                                    </columns>
+                                </TableView>
+                            </content>
+                        </TitledPane>
+                    </children>
+                </VBox>
+            </items>
+        </SplitPane>
+    </center>
+</BorderPane>
